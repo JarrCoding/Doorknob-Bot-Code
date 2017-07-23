@@ -1,0 +1,128 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const prefix = ";"
+const token = 'MzM3NzE5MTk1NjM2NzI3ODEw.DFT6sw.lN2G2FKqZDK0E1T2yOOlFM8iSUg'
+
+client.on('ready', function() {
+console.log('Logged in as Username!');
+});
+
+client.on('guildMemberAdd', function(member) {
+  member.guild.channels.find('name', 'general').sendMessage(member.toString() + ', welcome to the server!');
+  member.addRole(member.guild.roles.find('name', 'Member'));
+});
+
+client.on('message', function(message) {
+if (message.author.equals(client.user)) return;
+
+if (!message.content.startsWith(prefix)) return;
+
+if (message.content === '@Doorknob') message.reply('What do you need?');
+
+var args = message.content.substring(prefix.length).split(' ')
+
+switch (args[0]) {
+  default:
+  message.channel.sendMessage('Sorry, invalid command.')
+  break;
+  case 'hey':
+  message.reply('Hai');
+  break;
+  case 'hay':
+  message.reply('Im doing okay, thanks for asking!')
+  break;
+  case 'ping':
+  message.channel.sendMessage('Pong!')
+  break;
+  case 'info':
+  message.channel.sendMessage('I am a really dope bot made by Jarr.')
+  break;
+  case 'help':
+  message.channel.sendMessage('@everyone')
+  var embed = new Discord.RichEmbed()
+  .addField(';rules - Rules', '-')
+  .addField(';help - Shows This List!', '-')
+  .addField(';info - Info', '-')
+  .addField(';ping - Pong!', '-')
+  .addField(';hay - How are you?', '-')
+  .addField(';hey - Hai', '-')
+  .addField(";yt - Shows Jarr's YouTube Channel", '-')
+  .addField(";subs - Shows Jarr's Live Subscriber Count", '-')
+  .addField(';kys - Goodbye.', '-')
+  .addField(';marco - Polo!', '-')
+  .addField(';ily - I love you.', '-')
+  .addField(';bro - What?', '-')
+  .addField(';dance - Woo hoo!', '-')
+  .addField(';fire - FIRE', '-')
+  .addField(';jack - Annoying', '-')
+  .addField(';xd - Hahahaha', '-')
+  .addField(';ugoodbro - You good bro?', '-')
+  .addField(';idk - Idk', '-')
+  .addField(';noticeme - You have been noticed!', '-')
+  .addField(';avatar - What is my avatar?', '-')
+  .setColor('#2b24ff')
+  .setThumbnail(message.author.avatarURL)
+  message.channel.sendEmbed(embed);
+  break;
+  case 'yt':
+  message.channel.sendMessage('https://www.youtube.com/channel/UCGIddaQyDxai4nXej4oDQ1A')
+  break;
+  case 'subs':
+  message.channel.sendMessage('https://livecounts.net/channel/https://www.youtube.com/channel/UCGIddaQyDxai4nXej4oDQ1A')
+  break;
+  case 'kys':
+  message.channel.sendMessage('@everyone')
+  message.reply('said to go kill myself, bye.')
+  break;
+  case 'marco':
+  message.reply('Polo!')
+  break;
+  case 'ily':
+  message.reply('I love you too.')
+  message.channel.sendMessage('@everyone, I love you all!')
+  break;
+  case 'bro':
+  message.reply("What's up dude?")
+  break;
+  case 'bye':
+  message.reply("We'll miss you!")
+  break;
+  case 'dance':
+  message.channel.sendMessage('💃🏿')
+  break;
+  case 'fire':
+  message.channel.sendMessage('@everyone, PLEASE EVACUATE THE SERVER, THERE MAY BE A FI-0010101010101010010111000101010101010')
+  break;
+  case 'jack':
+  message.channel.sendMessage('JACK')
+  message.channel.sendMessage('JACK')
+  message.channel.sendMessage('JACK')
+  message.channel.sendMessage('JACK')
+  message.channel.sendMessage('JACK')
+  break;
+  case 'ugoodbro':
+  message.reply('Are you even good bro?')
+  break;
+  case 'rules':
+  var embed = new Discord.RichEmbed()
+  .addField('No Spamming', '-')
+  .addField('No asking for ranks', '-')
+  .addField('Be respectful to everyone', '-')
+  .addField('Do not talk back to Staff, or you will be Kicked/Banned', '-')
+  .setColor('#2b24ff')
+  .setThumbnail(message.author.avatarURL)
+  message.channel.sendEmbed(embed);
+  break;
+  case 'idk':
+  message.reply('I dont know either bro.')
+  break;
+  case 'noticeme':
+  message.channel.sendMessage(message.author.toString() + ' has now been noticed!');
+  break;
+  case 'avatar':
+  message.channel.sendMessage(message.author.avatarURL);
+  break;
+}
+});
+
+client.login('MzM3NzE5MTk1NjM2NzI3ODEw.DFT6sw.lN2G2FKqZDK0E1T2yOOlFM8iSUg');
